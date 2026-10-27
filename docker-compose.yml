@@ -1,0 +1,13 @@
+services:
+  gateway:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      GATEWAY_MODE: ${GATEWAY_MODE:-shadow}
+      GATEWAY_LLM_API_KEY: ${GATEWAY_LLM_API_KEY:-}
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
